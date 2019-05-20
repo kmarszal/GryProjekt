@@ -57,6 +57,9 @@
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyPathfinder.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
+     <Compile Include="Assets\Scripts\GunController.cs" />
+     <Compile Include="Assets\Scripts\GunPlaceholder.cs" />
+     <Compile Include="Assets\Scripts\GunTableController.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\Pathfinder.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
