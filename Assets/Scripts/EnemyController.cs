@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour
 {	
 	public List<Node> FinalPath;
 	public float speed;
+	public int damage;
+	public Transform Player;
+	public float damageRadius;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,10 @@ public class EnemyController : MonoBehaviour
 			
 			Vector3 movement = new Vector3(moveHorizontal*speed*Time.deltaTime,0.0f,moveVertical*speed*Time.deltaTime);
 			transform.position = transform.position + movement;
+		}
+		if(Vector3.Distance(transform.position, Player.transform.position) <= damageRadius)
+		{
+			Player.GetComponent<PlayerController>().Damage(damage, transform.position);
 		}
     }
 }
