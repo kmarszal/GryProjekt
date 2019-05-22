@@ -10,22 +10,32 @@ public class PlayerController : MonoBehaviour
 	public int knockbackForceMultiplier;
 	public Transform Gun;
 	private int currentImmunityFrames;
-	private Vector3 orientation;
 
     // Start is called before the first frame update
     void Start()
     {
         currentImmunityFrames = immunityFrames;
-		orientation = new Vector3(0, 0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-		Vector3 gunPosition = transform.position;
-		gunPosition.y += 0.5f;
-		gunPosition.x += transform.localScale.x / 2;
-        GetComponent<GunPlaceholder>().position = gunPosition;
+		if(health > 0) 
+		{
+			Vector3 mouse = Input.mousePosition;
+			Ray castPoint = Camera.main.ScreenPointToRay(mouse);
+			Vector3 lookDirection = castPoint.direction;
+			lookDirection.y = 0;
+			Quaternion rotation = Quaternion.LookRotation(lookDirection);
+			transform.rotation = rotation;
+			
+			Vector3 gunPosition = transform.position;
+			Vector3 right = -Vector3.Cross(lookDirection, Vector3.up).normalized * (transform.localScale.x / 2 + 0.25f);
+			gunPosition += right;
+			gunPosition.y += 0.5f;
+			GetComponent<GunPlaceholder>().position = gunPosition;
+			GetComponent<GunPlaceholder>().rotation = rotation;
+		}
     }
 
 	void FixedUpdate() {

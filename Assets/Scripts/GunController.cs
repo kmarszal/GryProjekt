@@ -8,12 +8,11 @@ public class GunController : MonoBehaviour
 	public int clipSize;
 	public int reloadTime;
 	public Transform Owner { get; set; }
-	private Vector3 orientation;
 	
     // Start is called before the first frame update
     void Start()
     {
-        orientation = new Vector3(1, 0, 0);
+		
     }
 
     // Update is called once per frame
@@ -22,6 +21,11 @@ public class GunController : MonoBehaviour
 		if(Owner != null)
 		{
 			transform.position = Owner.GetComponent<GunPlaceholder>().position;
+			Quaternion rotation = Owner.GetComponent<GunPlaceholder>().rotation;
+			if(rotation != null) 
+			{
+				transform.rotation = rotation;
+			}
 		}
     }
 	
