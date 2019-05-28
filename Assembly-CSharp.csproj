@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\GunController.cs" />
      <Compile Include="Assets\Scripts\GunPlaceholder.cs" />
      <Compile Include="Assets\Scripts\GunTableController.cs" />
+     <Compile Include="Assets\Scripts\MachineGunController.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\Pathfinder.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
