@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
 			currentImmunityFrames = immunityFrames;
 			if(health <= 0) {
 				GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                FindObjectOfType<GameManager>().EndGame();
 			}
 			GetComponent<Rigidbody>().AddForce(knockback);
 			
