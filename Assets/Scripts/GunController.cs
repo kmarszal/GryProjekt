@@ -8,11 +8,12 @@ public class GunController : MonoBehaviour
 	public int clipSize;
 	public int reloadTime;
 	public Transform Owner { get; set; }
+	public float bulletVelocity;
+	public int damage;
 	
     // Start is called before the first frame update
     void Start()
     {
-		
     }
 
     // Update is called once per frame
@@ -25,6 +26,18 @@ public class GunController : MonoBehaviour
 			if(rotation != null) 
 			{
 				transform.rotation = rotation;
+			}
+			
+			if (Input.GetMouseButtonDown(0)) 
+			{
+				GameObject bullet = GameObject.CreatePrimitive(PrimitiveType.Cube);
+				bullet.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+				bullet.transform.position = transform.position;
+				BulletController bc = bullet.AddComponent<BulletController>() as BulletController;
+				bc.damage = damage;
+				bullet.AddComponent<Rigidbody>();
+				Vector3 bulletDirection = rotation * new Vector3(0, 0, 1);
+				bullet.GetComponent<Rigidbody>().AddForce(bulletDirection * bulletVelocity);
 			}
 		}
     }
