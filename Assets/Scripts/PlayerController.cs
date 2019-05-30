@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour
 			//GetComponent<Rigidbody>().AddForce(movement*speed*Time.deltaTime);
 			transform.position = transform.position + movement;
 		}
+		else if(currentImmunityFrames > 0) 
+		{
+			FindObjectOfType<GameManager>().EndGame();
+		}
 	}
 	
 	public void Damage(int amount, Vector3 takenFrom)
